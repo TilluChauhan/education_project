@@ -1,21 +1,21 @@
 <?php include "admin/config/config.php";
  
- $sql="select * from user_register";
- $result=mysqli_query($conn,$sql);
- // while($row=mysqli_fetch_array($result)){
-	 // $email=$row['email'];
-	 // print_r($email); 
- // }
- while($regrow=mysqli_fetch_array($result)){
+ // $sql="select * from user_register";
+ // $result=mysqli_query($conn,$sql);
+ // // while($row=mysqli_fetch_array($result)){
+	 // // $email=$row['email'];
+	 // // print_r($email); 
+ // // }
+ // while($regrow=mysqli_fetch_array($result)){
  
  
-     //$demail=$regrow['email'];
-	 // print_r($regrow);
-	 $demail=$regrow['email'];
-	 echo $demail."<br>";
+     // //$demail=$regrow['email'];
+	 // // print_r($regrow);
+	 // $demail=$regrow['email'];
+	 // echo $demail."<br>";
 	 
 	 
- }
+ //}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,8 +165,7 @@
 			var cpass=$('#cpwd').val();
 			var address=$('#address').val();
 			var mobile=$('#mobile').val();
-			var dataemail="<?php echo $demail;?>";
-			 console.log(dataemail);
+			
 			 
 			// console.log(gender);
 			// console.log(fname);
@@ -177,11 +176,8 @@
 			// console.log(cpass);
 			 //console.log(address);
 			// console.log(mobile);
-			if( dataemail == email){
-				 //console.log('Tushar');
-				 $('#dubemail').html('email is already exist');
-				 return false;
-			 }else if(gender== ''){
+			
+			  if(gender== ''){
 				$('#emptygender').html('* please choose your gender');
 				return false;
 				
@@ -191,8 +187,7 @@
 			}else if(lname == ''){
 				$('#emptylname').html('*please enter last name');
 				return false;
-			}
-			else if(email == ''){
+			}else if(email == ''){
 				$('#emptyemail').html('*please enter your email');
 				return false;
 			}else if(pass == ''){
@@ -247,10 +242,10 @@
 				if(res== 1){
 					window.location.href = "user_login.php";
 					
-				}else{
+				}else if(res == 3){
 					swal({
-						  title: "Something Get!",
-						  text: "Please check your entity",
+						  title: "Oops",
+						  text: "This email is already exits",
 						  icon: "warning",
 						});
 				}

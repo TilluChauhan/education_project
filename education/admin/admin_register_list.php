@@ -170,7 +170,7 @@
         <div class="col">
           <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Card tables</h3>
+              <h3 class="text-white mb-0">Admin Register List</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-dark table-flush">
@@ -182,7 +182,7 @@
                     <th scope="col">Password</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">Edit</th>
-					<th scope="col">Delete</th>
+					
                   </tr>
                 </thead>
                 <tbody>
@@ -197,7 +197,7 @@
 					<td><?php echo $rrow['password'];?></td>
 					<td><?php echo $rrow['mobile'];?></td>
 					<td><a type="button" href="profile.php?edit=<?php echo $rrow['id'];?> " class="btn btn-danger">Edit</a></td>
-					<td><a type="button" class="btn btn-danger" href="ajax/admin_delete.php?delete=<?php echo $rrow['id']?>">Delete</a></td>
+					
 					
 				 </tr>
 				<?php

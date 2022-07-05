@@ -24,16 +24,26 @@
 	// print_r($address);
 	// print_r($mobile);
 
- $sql="insert into user_register(id,gender,first_name,last_name,image,email,password,address,mobile) value('','".$gender."','".$fname."','".$lname."','".$img."','".$email."','".$pass."','".$address."','".$mobile."');";
+ $xsql="select * from  user_register  where email='".$email."'";
+	$result=mysqli_query($conn,$xsql);
+	$row=mysqli_fetch_array($result);
+	
+	
+	if($row>0){	
+		echo 3;
+	}else{
+		//echo "sdgdf";
+		$sql="insert into user_register(id,gender,first_name,last_name,image,email,password,address,mobile) value('','".$gender."','".$fname."','".$lname."','".$img."','".$email."','".$pass."','".$address."','".$mobile."');";
 
  $result=mysqli_query($conn,$sql);
 
-	//		 print_r($result);
+	///		 print_r($result);
 	 if($result){
-		 echo 1;
-	 }else{
-		 echo 0;
+		  echo 1;
+	  }else{
+		 // echo 0;
 	 }
+	}
 
 
 ?>

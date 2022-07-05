@@ -1,4 +1,5 @@
-<?php include "config/config.php";
+<?php
+include "config/config.php";
 	session_start();
 	
 	if(isset($_SESSION['adminlog']) && $_SESSION['adminlog']!= ''){
@@ -6,14 +7,18 @@
 	//print_r($id);
 	$sql="select * from admin_login Where id='".$id."' ";
 	$result=mysqli_query($conn,$sql);
-	
+	$srow=mysqli_fetch_array($result);
 	
 	
 	//print_r($srow);
 	}
 	if(!isset($_SESSION['adminlog'])){
 		header('location:login.php');
-	}?><!--
+	}
+	$rsql="select * from user_register ";
+	$rresult=mysqli_query($conn,$rsql);
+
+	?><!--
 
 =========================================================
 * Argon Dashboard - v1.1.2

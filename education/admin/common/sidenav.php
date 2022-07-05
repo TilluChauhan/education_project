@@ -99,12 +99,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="./examples/maps.html">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
+            <a class="nav-link " href="user_list.php">
+              <i class="ni ni-single-02 text-yellow"></i>User_list
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="profile.php">
+            <a class="nav-link " href="admin_register_list.php">
               <i class="ni ni-single-02 text-yellow"></i> User profile
             </a>
           </li>
