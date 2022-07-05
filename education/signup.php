@@ -1,5 +1,6 @@
 <?php include "admin/config/config.php";
  
+<<<<<<< HEAD
  // $sql="select * from user_register";
  // $result=mysqli_query($conn,$sql);
  // // while($row=mysqli_fetch_array($result)){
@@ -16,6 +17,23 @@
 	 
 	 
  //}
+=======
+ $sql="select email from user_register ";
+ $result=mysqli_query($conn,$sql);
+ // while($row=mysqli_fetch_array($result)){
+	 // $email=$row['email'];
+	 // print_r($email); 
+ // }
+ $regrow=mysqli_fetch_array($result);
+ 
+// print_r($regrow);
+     //$demail=$regrow['email'];
+	 // print_r($regrow);
+	 
+	 
+	 
+ 
+>>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -166,7 +184,10 @@
 			var address=$('#address').val();
 			var mobile=$('#mobile').val();
 			
+<<<<<<< HEAD
 			 
+=======
+>>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 			// console.log(gender);
 			// console.log(fname);
 			// console.log(lname);
@@ -176,7 +197,15 @@
 			// console.log(cpass);
 			 //console.log(address);
 			// console.log(mobile);
+<<<<<<< HEAD
 			
+=======
+			// if( dataemail == email){
+				 // //console.log('Tushar');
+				 // $('#dubemail').html('email is already exist');
+				 // return false;
+			 // }
+>>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 			  if(gender== ''){
 				$('#emptygender').html('* please choose your gender');
 				return false;
@@ -242,10 +271,17 @@
 				if(res== 1){
 					window.location.href = "user_login.php";
 					
+<<<<<<< HEAD
 				}else if(res == 3){
 					swal({
 						  title: "Oops",
 						  text: "This email is already exits",
+=======
+				}else if(res==3){
+					swal({
+						  title: "Something Get!",
+						  text: "Please check your",
+>>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 						  icon: "warning",
 						});
 				}
