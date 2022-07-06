@@ -13,7 +13,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">Mentor</a></h1>
+      <h1 class="logo me-auto"><a href="index.php"><img style="width:159px;" src="image/logo.png"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -51,7 +51,7 @@
 				</div>
 				</div>
 				<div class="qa4">
-					<div class="qa5"><a type="button" href="myprofile.php" class="get-started-btn sop">My profile</a></div>
+					<div class="qa5"><a type="button" href="profile.php" class="get-started-btn sop">My profile</a></div>
 					<div class="qa5"><a type="button" href="user_logout.php" class="get-started-btn sop">Log Out</a></div>
 				</div>
 				

@@ -42,12 +42,9 @@
 					<label for="pwd" class="wq1">Password:<span id="emptyuserpass" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
 					<input type="text" class="form-control" placeholder="Enter password" id="userpwd">
 				 </div>
-				 <div class="form-group wq2" >
-					<label for="name" class="wq1">Enter Mobile:<span id="emptyuserno" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
-					<input type="number" class="form-control" placeholder="Enter mobile" id="usermobile">
-				 </div>
+				 
 				 <div class="mp66">
-						 <button type="button"  id="login" style="background-color:#5fcf80; font-weight:bold; border:1px solid #5fcf80;" class="btn btn-success">Login</button>
+						 <button type="button"  id="login" style="background-color:#520f15; font-weight:bold; border:1px solid #520f15;" class="btn btn-success">Login</button>
 						
 				</div>
 				<a  href="forget_password.php">Forget Password</a>

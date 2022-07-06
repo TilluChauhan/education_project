@@ -1,6 +1,5 @@
 <?php include "admin/config/config.php";
  
-<<<<<<< HEAD
  // $sql="select * from user_register";
  // $result=mysqli_query($conn,$sql);
  // // while($row=mysqli_fetch_array($result)){
@@ -17,23 +16,6 @@
 	 
 	 
  //}
-=======
- $sql="select email from user_register ";
- $result=mysqli_query($conn,$sql);
- // while($row=mysqli_fetch_array($result)){
-	 // $email=$row['email'];
-	 // print_r($email); 
- // }
- $regrow=mysqli_fetch_array($result);
- 
-// print_r($regrow);
-     //$demail=$regrow['email'];
-	 // print_r($regrow);
-	 
-	 
-	 
- 
->>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,17 +58,17 @@
 						  <option value="Mr.">Mr.</option>
 						  <option value="Mr.">Mrs.</option>
 						  
-						</select><span id="emptygender" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+						</select><span id="emptygender" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 				</div>
 				<div class="form-group wq2">
 					<div class="row">
 						
 						<div class="col-lg-6 col-md-6">
-							<label for="name" class="wq1">First Name:<span id="emptyfname" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+							<label for="name" class="wq1">First Name:<span id="emptyfname" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 							<input type="text" class="form-control" placeholder="Enter first name" id="fname">
 						</div>
 						<div class="col-lg-6 col-md-6">
-							<label for="name" class="wq1">Last Name:<span id="emptylname" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+							<label for="name" class="wq1">Last Name:<span id="emptylname" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 							<input type="text" class="form-control" placeholder="Enter last name" id="lname">
 						</div>
 					</div>
@@ -96,7 +78,7 @@
 					  <input type="file" class="form-control" id="image" required>
 				</div>
 				<div class="form-group wq2">
-					<label for="email" class="wq1">Email address:<span id="emptyemail" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span><span id="dubemail" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+					<label for="email" class="wq1">Email address:<span id="emptyemail" style="font-weight:bold; color:#520f15; font-style:italic;"></span><span id="dubemail" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 					<input type="text" class="form-control" placeholder="email@gmail.com" id="email">
 				 </div>
 				 <div class="row">
@@ -108,22 +90,22 @@
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="form-group wq2">
-							<label for="pwd" class="wq1"> confirm Password:<span id="cemptypass" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span><span id="conemptypass" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+							<label for="pwd" class="wq1"> confirm Password:<span id="cemptypass" style="font-weight:bold; color:#520f15; font-style:italic;"></span><span id="conemptypass" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 							<input type="text" class="form-control" placeholder="Enter password" id="cpwd">
 						 </div>
 					</div>
 				 </div>
 				 <div class="form-group wq2" >
-					<label for="name" class="wq1">Address:<span id="emptyaddress" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+					<label for="name" class="wq1">Address:<span id="emptyaddress" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 					<input type="text" class="form-control" placeholder="Enter address" id="address">
 				 </div>
 				 
 				 <div class="form-group wq2" >
-					<label for="name" class="wq1">Enter Mobile:<span id="emptyno" style="font-weight:bold; color:#5fcf80; font-style:italic;"></span></label>
+					<label for="name" class="wq1">Enter Mobile:<span id="emptyno" style="font-weight:bold; color:#520f15; font-style:italic;"></span></label>
 					<input type="number" class="form-control" placeholder="Enter mobile" id="mobile">
 				 </div>
 				 <div class="mp66">
-						 <button type="button"  id="sign" style="background-color:#5fcf80; font-weight:bold; border:1px solid #5fcf80;" class="btn btn-success">Sign Up</button>
+						 <button type="button"  id="sign" style="background-color:#520f15; font-weight:bold; border:1px solid #520f15;" class="btn btn-success">Sign Up</button>
 						
 				</div>
 				 <p>Do not have account?<a  href="signup.php">register<span>/</span><span><a href="user_login.php">Login</a></span></a></p>
@@ -184,10 +166,7 @@
 			var address=$('#address').val();
 			var mobile=$('#mobile').val();
 			
-<<<<<<< HEAD
 			 
-=======
->>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 			// console.log(gender);
 			// console.log(fname);
 			// console.log(lname);
@@ -197,15 +176,7 @@
 			// console.log(cpass);
 			 //console.log(address);
 			// console.log(mobile);
-<<<<<<< HEAD
 			
-=======
-			// if( dataemail == email){
-				 // //console.log('Tushar');
-				 // $('#dubemail').html('email is already exist');
-				 // return false;
-			 // }
->>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 			  if(gender== ''){
 				$('#emptygender').html('* please choose your gender');
 				return false;
@@ -271,17 +242,10 @@
 				if(res== 1){
 					window.location.href = "user_login.php";
 					
-<<<<<<< HEAD
 				}else if(res == 3){
 					swal({
 						  title: "Oops",
 						  text: "This email is already exits",
-=======
-				}else if(res==3){
-					swal({
-						  title: "Something Get!",
-						  text: "Please check your",
->>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 						  icon: "warning",
 						});
 				}

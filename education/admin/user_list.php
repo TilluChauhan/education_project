@@ -14,7 +14,22 @@
 	if(!isset($_SESSION['adminlog'])){
 		header('location:login.php');
 	}
-	$rsql="select * from user_register ";
+	// $rsql="select * from user_register ";
+	// $rresult=mysqli_query($conn,$rsql);
+	
+	$limit=4;
+		
+		
+		if(isset($_GET['page'])){
+			$page=$_GET['page'];
+			//print_r($page);
+		
+		}else{
+			$page=1;
+		}
+		$offset=($page-1)* $limit;
+		//print_r($offset);
+	$rsql="select * from user_register LIMIT {$offset},{$limit}";
 	$rresult=mysqli_query($conn,$rsql);
 	
 	
@@ -215,6 +230,45 @@
           </div>
         </div>
       </div>
+	  <div class="card-footer py-4">
+              <nav aria-label="...">
+			  <?php
+					$qwe="select * from user_register";
+						$qs=mysqli_query($conn,$qwe);
+						if(mysqli_num_rows($qs)){
+						$sd=mysqli_num_rows($qs);
+						//print_r($sd);
+					
+						$total=ceil($sd/$limit);
+						echo '<ul class="pagination justify-content-end mb-0">';
+						if($page>1){
+							echo '<li class="page-item" ><a href="user_list.php?page='.($page-1).' "  class="page-link" style="padding:12px 30px">Prev</a></li>';
+						}
+						
+						for($i=1; $i<=$total;$i++ ){
+							if($i==$page){
+								$active='active';
+							}else{
+								$active='';
+							}
+							echo '<li class="page-item '.$active.'"><a class="page-link"  href="user_list.php?page='.$i.' " >'.$i.'</a></li>';
+						}
+						if($total>$page){
+							echo '<li class="page-item '.$active.'"><a href="user_list.php?page='.($page+1).' " class="page-link" style="padding:12px 30px" >Next</a></li>';
+						}
+						
+						
+						echo '</ul>';
+						}
+						
+			  ?>
+			 
+              
+            </div>
+                
+					
+              </nav>
+            </div>
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">

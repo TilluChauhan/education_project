@@ -33,19 +33,16 @@
             <img src="image/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-	     <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+	     <h3>ABOUT US</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              EduS8ul transform career through various skills and certification training. 
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i>We are leading education provider of training for working professionals in the arrears of project management , service management , big data ,data science , quality management and team management.</li>
+              <li><i class="bi bi-check-circle"></i>  We offer live online training for our students and online e- learning self paced training .</li>
+              <li><i class="bi bi-check-circle"></i>Our trainers and team are always ready to train learning minds in various areas of courses pmp scrum master, six sigma , ITIL , prince2 , zli>
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            </p>
+           
 
           </div>
         </div>
@@ -235,11 +232,11 @@
                   <p class="price">$169</p>
                 </div>
 
-                <h3><a href="course-details.html">Website Design</a></h3>
+                <h3><a href="course_detail.php">Website Design</a></h3>
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                    <img src="image/trainers/trainer-1.jpg" class="img-fluid" alt="">
                     <span>Antonio</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
@@ -261,11 +258,11 @@
                   <p class="price">$250</p>
                 </div>
 
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
+                <h3><a href="course_detail.php">Search Engine Optimization</a></h3>
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
+                    <img src="image/trainers/trainer-2.jpg" class="img-fluid" alt="">
                     <span>Lana</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
@@ -287,11 +284,11 @@
                   <p class="price">$180</p>
                 </div>
 
-                <h3><a href="course-details.html">Copywriting</a></h3>
+                <h3><a href="course_detail.php">Copywriting</a></h3>
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                    <img src="image/trainers/trainer-3.jpg" class="img-fluid" alt="">
                     <span>Brandon</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">

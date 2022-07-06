@@ -23,13 +23,8 @@
 	// print_r($pass);
 	// print_r($address);
 	// print_r($mobile);
-<<<<<<< HEAD
 
  $xsql="select * from  user_register  where email='".$email."'";
-=======
-	
-	$xsql="select * from  user_register  where email='".$email."'";
->>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 	$result=mysqli_query($conn,$xsql);
 	$row=mysqli_fetch_array($result);
 	
@@ -49,11 +44,6 @@
 		 // echo 0;
 	 }
 	}
-<<<<<<< HEAD
-=======
-
-  
->>>>>>> 222520c97f6930d1a96b430c293618de0b687e9b
 
 
 ?>

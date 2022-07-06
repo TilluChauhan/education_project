@@ -5,7 +5,7 @@
 		// print_r($id);
 		// print_r($name);
 		// print_r($status);
-		$sql="Update cat_course  SET cat_name='".$name."', status='".$status."' ";
+		$sql="Update cat_course  SET cat_name='".$name."', status='".$status."' Where cat_id='".$id."' ";
 		$result=mysqli_query($conn,$sql);
 		//$row=mysqli_fetch_array($result);
 		if($result){

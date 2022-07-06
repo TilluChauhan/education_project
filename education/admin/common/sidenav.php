@@ -109,8 +109,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="table.php">
-              <i class="ni ni-bullet-list-67 text-red"></i> Tables
+            <a class="nav-link " href="cat_course_list.php">
+              <i class="ni ni-bullet-list-67 text-red"></i>Category List
             </a>
           </li>
           <li class="nav-item">
