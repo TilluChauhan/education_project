@@ -186,6 +186,7 @@
           <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
               <h3 class="text-white mb-0">User Register List</h3>
+			  <div style="text-align:center; "><a href="course.php" type="button"  class="btn btn-danger">Add</a></div>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-dark table-flush">
@@ -225,9 +226,9 @@
 					<td><?php echo $rrow['start_time'];?></td>
 					<td><?php echo $rrow['closed_time'];?></td>
 					<td><?php echo $rrow['status'];?></td>
-					<td><textarea id="w3review" style="color:#fff; width:60%; background-color:#172b4d;"name="w3review" rows="4" cols="50"><?php echo $rrow['description'];?></textarea></td>
+					<td><textarea id="w3review" style="color:#fff; width:100%; background-color:#172b4d;"name="w3review" rows="4" cols="50"><?php echo $rrow['description'];?></textarea></td>
 					<td><a type="button" href="course.php?edit=<?php echo $rrow['course_id'];?> " class="btn btn-danger">Edit</a></td>
-					<td><a type="button" href="ajax/delete_course.php?delete=<?php echo $rrow['course_id'];?> " class="btn btn-danger">Delete</a></td>
+					<td><a type="button" href="ajax/course_delete.php?delete=<?php echo $rrow['course_id'];?> " class="btn btn-danger">Delete</a></td>
 					
 					
 				 </tr>

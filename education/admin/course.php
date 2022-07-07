@@ -20,9 +20,22 @@
 	// while($catrow=mysqli_fetch_array($catresult)){
 		// print_r($catrow);
 	// }
+	$course_id=null;
+	$category=null;
 	$addmode=true;
 	$course_name=null;
+	$image=null;
+	$dimage=null;
+	$trainer_name=null;
+	$price=null;
+	$seat=null;
+	$starttime=null;
+	$closedtime=null;
+	$status=null;
+	$description=null;
+
 	if(isset($_GET['edit'])){
+		
 		$course_id=$_GET['edit'];
 		$addmode=false;
 		$editsql="select  * from  course Where course_id='".$course_id."' ";
@@ -30,6 +43,19 @@
 		$editrow=mysqli_fetch_array($editresult);
 		//print_r($editrow);
 		$course_name=$editrow['course_name'];
+		$category=$editrow['category'];
+		$image=$editrow['image'];
+		$dimage=$editrow['dimage'];
+		$trainer_name=$editrow['trainer_name'];
+		$price=$editrow['price'];
+		$seat=$editrow['seat'];
+		$starttime=$editrow['start_time'];
+		$closedtime=$editrow['closed_time'];
+		$status=$editrow['status'];
+		//$description=$editrow['description'];
+		$description= trim ($editrow['description']);
+		//print_r($description);
+		
 		
 	}
 	
@@ -196,9 +222,18 @@
 					  <label for="cars">Course Category<span id="emptycat" style="font-weight:bold; padding-left:5px;"></span></label>
 
 						<select   style="width:100%;" name="course" id="course">
-						  <option value="">Select Category</option>
+						  <option value="<?php echo $category;?>"><?php if($addmode){
+							  
+							  ?>Choose Category
+							  <?php
+							  }else{
+								  ?>
+								  <?php echo $category;?>
+								  <?php
+							  }?>
+							  </option>
 						  <?php while($catrow=mysqli_fetch_array($catresult)){
-							  ?> <option value="<?php echo $catrow['cat_id'];?>"><?php echo $catrow['cat_name'];?></option>
+							  ?> <option value="<?php echo $catrow['cat_name'];?>"><?php echo $catrow['cat_name'];?></option>
 						  
 							<?php
 						  }?>
@@ -209,7 +244,7 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Course_Name<span id="emptyname" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="text" class="form-control"  value="<?php echo $course_name;?>" id="name">
+					  <input type="text" class="form-control" placeholder="Enter course name"  value="<?php echo $course_name;?>" id="name">
 					  
 					</div>
 				</div>
@@ -228,43 +263,43 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Trainer_Name<span id="emptytrainername" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="Text" class="form-control"  value="" id="tainer_name">
+					  <input type="Text" class="form-control" placeholder=""  value="<?php echo $trainer_name;?>" id="tainer_name">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Price<span id="emptyprice" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="number" class="form-control"  value="" id="price">
+					  <input type="number" class="form-control"  value="<?php echo $price?>" id="price">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Seat<span id="emptyseat" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="number" class="form-control"  value="" id="seat">
+					  <input type="number" class="form-control"  value="<?php echo $seat;?>" id="seat">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Start_Time<span id="emptystarttime" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="time" class="form-control"  value="" id="stime">
+					  <input type="time" class="form-control"  value="<?php echo $starttime;?>" id="stime">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Closed_Time<span id="emptyclosedtime" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="time" class="form-control"  value="" id="ctime">
+					  <input type="time"  pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$"  class="form-control"  value="<?php echo $closedtime;?>" id="ctime">
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Status<span id="emptystatus" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="number" class="form-control" value="" id="status">
+					  <input type="number" class="form-control" value="<?php echo $status;?>" id="status">
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12">
 					<div class="form-group">
 					  <label for="usr">Description</label>
-					   <textarea type="text" class="form-control description" id="description"  value="" placeholder="Enter Feature" ></textarea>
+					   <textarea type="text" class="form-control description" value="<?php echo $description;?>"  id="description"   placeholder="Enter Feature" ></textarea>
 					</div>
 				</div>
 				
@@ -274,7 +309,7 @@
 						?><button type="button" class="btn btn-primary" id="add">Add</button>
 						<?php
 					}else{
-						?><button type="button" class="btn btn-primary" id="add">Update</button>
+						?><button type="button" class="btn btn-primary" id="edit">Update</button>
 						<?php
 					}?>
 					
@@ -344,18 +379,21 @@
  <!--script-->
 	<?php include "common/script.php";?>
 	
-	<script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+	<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 	
 	<!--script-->
   <script>
    // CKEDITOR.replace('description');
 CKEDITOR.replace('description');
+CKEDITOR.instances['description'].setData("<?php echo $description;?>");
+
 	
 	window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
       });
+	  // add work
 	  $(document).ready(function(){
 		  
 		  $('#course').change(function(){
@@ -452,6 +490,7 @@ CKEDITOR.replace('description');
 			}
 			
 			var data=new FormData();
+		
 			data.append('T_category',category);
 			data.append('T_name',name);
 			data.append('T_image',image);
@@ -459,7 +498,7 @@ CKEDITOR.replace('description');
 			data.append('T_trainername',trainername);
 			data.append('T_price',price);
 			data.append('T_seat',seat);
-			data.append('T_starttimne',starttime);
+			data.append('T_starttime',starttime);
 			data.append('T_closedtime',closedtime);
 			data.append('T_status',status);
 			data.append('T_description',description);
@@ -475,13 +514,113 @@ CKEDITOR.replace('description');
 				success:function(resp){
 					//console.log(resp);
 					if(resp == 1){
-						swal("Good job", "You have insert the data !", "success");
+						//swal("Good job", "You have insert the data !", "success");
+						window.location.href="course_list.php
 					}else{
 						swal("Oops", "please chk your data", "warning");
 					}
+					$('.swal-button-container').click(function(){
+					//console.log('tuusa');
+					//window.location.href="course_list.php";
+				});	
 				}
 			});
 		 });
+		 
+		 //edit  work
+		 $('#edit').click(function(){
+			//console.log('afsgfasg');
+			var id="<?php echo $course_id;?>";
+			var category="<?php echo $category;?>";
+			if(category){
+				var cat=$('#course').val();
+			
+			}
+			//console.log(cat);
+			
+			
+			var name=$('#name').val();
+			var image=$('#image')[0].files[0];
+			if(image){
+				
+				console.log(image);
+			}
+			if(image!= ''){
+				var imagename="<?php echo $image;?>";
+				console.log(imagename);
+			}
+			
+			
+			var dimage=$('#dimage')[0].files[0];
+			if(dimage){
+				console.log(dimage);
+			}
+			if(dimage!=''){
+				var dimagename="<?php echo $dimage;?>";
+				console.log(dimagename);
+			}
+			
+			var trainername=$('#tainer_name').val();
+			var price=$('#price').val();
+			var seat=$('#seat').val();
+			var starttime=$('#stime').val();
+			var closedtime=$('#ctime').val();
+			var status=$('#status').val();
+			var description=CKEDITOR.instances["description"].getData();
+			// console.log(id);
+			// console.log(category);
+			// console.log(name);
+			
+			// console.log(trainername);
+			// console.log(price);
+			// console.log(starttime);
+			// console.log(closedtime);
+			// console.log(status);
+			// console.log(description);
+			
+			
+			var data=new FormData();
+			data.append('F_id',id);
+			data.append('F_cat',cat);
+			data.append('F_name',name);
+			data.append('F_image',image);
+			data.append('F_imagename',imagename);
+			data.append('F_dimage',dimage);
+			data.append('F_dimagename',dimagename);
+			//data.append('T_dimage',dimage);
+			data.append('F_trainername',trainername);
+			data.append('F_price',price);
+			data.append('F_seat',seat);
+			data.append('F_starttimne',starttime);
+			data.append('F_closedtime',closedtime);
+			data.append('F_status',status);
+			data.append('F_description',description);
+			
+			$.ajax({
+			
+				url:'ajax/course_update.php',
+				type:'POST',
+						cache:false,
+						contentType:false,
+						processData:false,
+						data:data,
+				success:function(resp){
+				//console.log(resp);
+				if(resp==1){
+					swal({
+						  title: "Good Dear!",
+						  text: "You have Successfully updated data!",
+						  icon: "success",
+						});
+				}
+				$('.swal-button-container').click(function(){
+					//console.log('tuusa');
+					window.location.href="course_list.php";
+				});	
+				}
+			});
+		 });
+		 
 	  });
 	  
   </script>

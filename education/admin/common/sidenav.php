@@ -113,6 +113,11 @@
               <i class="ni ni-bullet-list-67 text-red"></i>Category List
             </a>
           </li>
+		  <li class="nav-item">
+            <a class="nav-link " href="course_list.php">
+              <i class="ni ni-bullet-list-67 text-red"></i>Course List
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="login.php">
               <i class="ni ni-key-25 text-info"></i> Login

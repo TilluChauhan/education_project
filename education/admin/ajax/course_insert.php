@@ -25,12 +25,13 @@
 	$trainername=$_POST['T_trainername'];
 	$price=$_POST['T_price'];
 	$seat=$_POST['T_seat'];
-	$starttime=$_POST['T_starttimne'];
+	$starttime=$_POST['T_starttime'];
 	$closedtime=$_POST['T_closedtime'];
 	$status=$_POST['T_status'];
 	$description=$_POST['T_description'];
 	
 	
+	//print_r($imagemove);
 	// print_r($category);
 	// print_r($name);
 	// print_r($image);
@@ -41,14 +42,19 @@
 	// print_r($closedtime);
 	// print_r($status);
 	// print_r($description);
-	
- $sql="insert into course (course_id,category,course_name,image,dimage,trainer_name,price,seat,start_time,closed_time,status,description) Value('','".$category."','".$name."','".$imagename."','".$dimagename."','".$trainername."','".$price."','".$seat."','".$starttime."','".$closedtime."','".$status."','".$description."')";
-	// print_r($sql);
+	if($imagemove!=1 && $dimagemove!=1){
+		
+		echo 3;
+ 
+	}else{
+		$sql="insert into course (course_id,category,course_name,image,dimage,trainer_name,price,seat,start_time,closed_time,status,description) Value('','".$category."','".$name."','".$imagename."','".$dimagename."','".$trainername."','".$price."','".$seat."','".$starttime."','".$closedtime."','".$status."','".$description."')";
+	 //print_r($sql);
 	$result=mysqli_query($conn,$sql);
 	if($result){
 		echo 1;
 	}else{
 		echo 0;
+	}
 	}
 	
 	
