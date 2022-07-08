@@ -11,19 +11,14 @@ $id=$_POST['F_id'];
  //print_r($image);
 //print_r($reimage); 
  }
- $dimagename=$_POST['F_dimagename'];
- if(isset($_FILES['F_dimage'])){
-	 $dimage=$_FILES['F_dimage'];
-	 $redimage=move_uploaded_file($dimage['tmp_name'],'../image/course_detail/'.$dimagename);
- }
+
  
  //print_r($imagename);
- $trainername=$_POST['F_trainername'];
+
  $price=$_POST['F_price'];
- $seat=$_POST['F_seat'];
- $starttime=$_POST['F_starttimne'];
- $closedtime=$_POST['F_closedtime'];
+
  $status=$_POST['F_status'];
+ $shortdescription=$_POST['F_shortdescription'];
  $description=$_POST['F_description'];
 
 // print_r($id);
@@ -36,7 +31,7 @@ $id=$_POST['F_id'];
 // print_r($closedtime);
 // print_r($status);
 // print_r($description);
-$sql="UPDATE course SET category='".$course_cat."',course_name='".$name."',image='".$imagename."', dimage='".$dimagename."',trainer_name='".$trainername."', price='".$price."' ,seat='".$seat."' , start_time='".$starttime."', closed_time='".$closedtime."', status='".$status."', description='".$description."' Where course_id='".$id."'";
+$sql="UPDATE course SET category='".$course_cat."',course_name='".$name."',image='".$imagename."', price='".$price."', status='".$status."', short_description='".$shortdescription."',description='".$description."' Where course_id='".$id."'";
 //print_r($sql);
 $result=mysqli_query($conn,$sql);
 if($result){

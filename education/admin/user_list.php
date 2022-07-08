@@ -15,7 +15,7 @@
 		header('location:login.php');
 	}
 	// $rsql="select * from user_register ";
-	// $rresult=mysqli_query($conn,$rsql);
+	// $rresult=mysqli_query($conn,$rsql); 
 	
 	$limit=4;
 		

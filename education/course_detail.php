@@ -1,4 +1,16 @@
-<?php session_start();?>
+<?php session_start();
+	include "admin/config/config.php";
+	if(isset($_GET['detail'])){
+		$detail=$_GET['detail'];
+		print_r($detail);
+			$sql="select * from course Where course_id='".$detail."'";
+	$result=mysqli_query($conn,$sql);
+	$row=mysqli_fetch_array($result);
+	}
+
+	
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,38 +48,22 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-8">
-            <img src="image/course-details.jpg" class="img-fluid" alt="">
-            <h3>Et enim incidunt fuga tempora</h3>
-            <p>
-              Qui et explicabo voluptatem et ab qui vero et voluptas. Sint voluptates temporibus quam autem. Atque nostrum voluptatum laudantium a doloremque enim et ut dicta. Nostrum ducimus est iure minima totam doloribus nisi ullam deserunt. Corporis aut officiis sit nihil est. Labore aut sapiente aperiam.
-              Qui voluptas qui vero ipsum ea voluptatem. Omnis et est. Voluptatem officia voluptatem adipisci et iusto provident doloremque consequatur. Quia et porro est. Et qui corrupti laudantium ipsa.
-              Eum quasi saepe aperiam qui delectus quaerat in. Vitae mollitia ipsa quam. Ipsa aut qui numquam eum iste est dolorum. Rem voluptas ut sit ut.
-            </p>
+          <div class="col-lg-12 col-md-12">
+            <img src="<?php echo 'admin/image/course/'.$row['image'];?>" style="width:100%; height:30%;" class="" alt="">
+			<div  style="display:flex;">
+				<div style="flex:1;">
+					<div style="font-weight:bold;"><?php echo $row['course_name'];?></div>
+				</div>
+				<div style="flex:1; text-align:right">
+					<h3 style="font-weight:bold;">Price<span style="padding:5px 0px;">:</span>$<?php echo $row['price']?></h3>
+				</div>
+				
+			</div>
+            
+			<div ><?php echo $row['description'];?></div>
+			<div style="text-align:right;"><button type="button" class="btn" style="background-color:#520f15; font-weight:bold; color:#fff; padding:15px 30px;">Buy Now</button></div>
           </div>
-          <div class="col-lg-4">
-
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Trainer</h5>
-              <p><a href="#">Walter White</a></p>
-            </div>
-
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Course Fee</h5>
-              <p>$165</p>
-            </div>
-
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
-              <p>30</p>
-            </div>
-
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Schedule</h5>
-              <p>5.00 pm - 7.00 pm</p>
-            </div>
-
-          </div>
+          
         </div>
 
       </div>

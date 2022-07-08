@@ -20,18 +20,18 @@
 	// while($catrow=mysqli_fetch_array($catresult)){
 		// print_r($catrow);
 	// }
+		$addmode=true;
 	$course_id=null;
 	$category=null;
-	$addmode=true;
+
 	$course_name=null;
 	$image=null;
-	$dimage=null;
-	$trainer_name=null;
+	
 	$price=null;
 	$seat=null;
-	$starttime=null;
-	$closedtime=null;
+	
 	$status=null;
+	$shortdescription=null;
 	$description=null;
 
 	if(isset($_GET['edit'])){
@@ -45,15 +45,14 @@
 		$course_name=$editrow['course_name'];
 		$category=$editrow['category'];
 		$image=$editrow['image'];
-		$dimage=$editrow['dimage'];
-		$trainer_name=$editrow['trainer_name'];
+	
+			
 		$price=$editrow['price'];
-		$seat=$editrow['seat'];
-		$starttime=$editrow['start_time'];
-		$closedtime=$editrow['closed_time'];
 		$status=$editrow['status'];
 		//$description=$editrow['description'];
+		$shortdescription= trim ($editrow['short_description']);
 		$description= trim ($editrow['description']);
+		
 		//print_r($description);
 		
 		
@@ -256,44 +255,21 @@
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
-					  <label for="usr">Detail_Image</label>
-					  <input type="file" class="form-control"  value="" id="dimage">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="form-group">
-					  <label for="usr">Trainer_Name<span id="emptytrainername" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="Text" class="form-control" placeholder=""  value="<?php echo $trainer_name;?>" id="tainer_name">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="form-group">
 					  <label for="usr">Price<span id="emptyprice" style="font-weight:bold; padding-left:5px;" ></span></label>
 					  <input type="number" class="form-control"  value="<?php echo $price?>" id="price">
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="form-group">
-					  <label for="usr">Seat<span id="emptyseat" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="number" class="form-control"  value="<?php echo $seat;?>" id="seat">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="form-group">
-					  <label for="usr">Start_Time<span id="emptystarttime" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="time" class="form-control"  value="<?php echo $starttime;?>" id="stime">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="form-group">
-					  <label for="usr">Closed_Time<span id="emptyclosedtime" style="font-weight:bold; padding-left:5px;" ></span></label>
-					  <input type="time"  pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$"  class="form-control"  value="<?php echo $closedtime;?>" id="ctime">
-					</div>
-				</div>
+				
 				<div class="col-lg-6 col-md-6">
 					<div class="form-group">
 					  <label for="usr">Status<span id="emptystatus" style="font-weight:bold; padding-left:5px;" ></span></label>
 					  <input type="number" class="form-control" value="<?php echo $status;?>" id="status">
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12">
+					<div class="form-group">
+					  <label for="usr">Short Description</label>
+					   <textarea type="text" class="form-control description" value="<?php echo $shortdescription;?>"  id="shortdescription"   placeholder="Enter Feature" ></textarea>
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12">
@@ -385,6 +361,8 @@
   <script>
    // CKEDITOR.replace('description');
 CKEDITOR.replace('description');
+CKEDITOR.replace('shortdescription');
+CKEDITOR.instances['shortdescription'].setData("<?php echo $shortdescription;?>");
 CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 
 	
@@ -404,53 +382,33 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 		  $('#name').keyup(function(){
 			$('#emptyname').html('');  
 		  });
-		   $('#tainer_name').keyup(function(){
-			$('#emptytrainername').html('');  
-		  });
+		  
 		  $('#price').keyup(function(){
 			$('#emptyprice').html('');  
-		  });
-		  $('#price').keyup(function(){
-			$('#emptyprice').html('');  
-		  });
-		  $('#seat').keyup(function(){
-			$('#emptyseat').html('');  
-		  });
-		  $('#stime').change(function(){
-			$('#emptystarttime').html('');  
-		  });
-		  $('#ctime').change(function(){
-			$('#emptyclosedtime').html('');  
 		  });
 		  $('#status').keyup(function(){
 			$('#emptystatus').html('');  
 		  });
-		  $('#description').change(function(){
-			$('#emptydescription').html('');  
-		  });
+		 
 		  
 		 $('#add').click(function(){
 			//console.log('afsgfasg');
 			var category=$('#course').val();
 			var name=$('#name').val();
 			var image=$('#image')[0].files[0];
-			var dimage=$('#dimage')[0].files[0];
-			var trainername=$('#tainer_name').val();
+			
 			var price=$('#price').val();
-			var seat=$('#seat').val();
-			var starttime=$('#stime').val();
-			var closedtime=$('#ctime').val();
 			var status=$('#status').val();
+			var short_description=CKEDITOR.instances["shortdescription"].getData();
 			var description=CKEDITOR.instances["description"].getData();
+			
 			console.log(category);
 			console.log(name);
 			console.log(image);
-			console.log(dimage);
-			console.log(trainername);
 			console.log(price);
-			console.log(starttime);
-			console.log(closedtime);
+			
 			console.log(status);
+			console.log(short_description);
 			console.log(description);
 			
 			if(category == ''){
@@ -459,28 +417,10 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 			}else if(name == ''){
 				$('#emptyname').html('*Please enter name');
 				return false;
-			}else if(image == ''){
-				$('#emptyimage').html('*Please enter image');
-				return false;
-			}else if(trainername == '' ){
-				$('#emptytrainername').html('* please enter trainer name');
-				return  false;
-				
 			}else if(price == '' ){
 				$('#emptyprice').html('* please enter price');
 				return  false;
 				
-			}else if(seat == '' ){
-				$('#emptyseat').html('* please enter seat');
-				return  false;
-				
-			}else if(starttime == '' ){
-				$('#emptystarttime').html('* please enter start time');
-				return  false;
-				
-			}else if(closedtime == '' ){
-				$('#emptyclosedtime').html('* please enter closed time');
-				return  false;
 			}else if(status == '' ){
 				$('#emptystatus').html('* please enter status');
 				return  false;
@@ -494,14 +434,11 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 			data.append('T_category',category);
 			data.append('T_name',name);
 			data.append('T_image',image);
-			data.append('T_dimage',dimage);
-			data.append('T_trainername',trainername);
+			
 			data.append('T_price',price);
-			data.append('T_seat',seat);
-			data.append('T_starttime',starttime);
-			data.append('T_closedtime',closedtime);
 			data.append('T_status',status);
 			data.append('T_description',description);
+			data.append('T_shortdescription',short_description);
 			
 			$.ajax({
 			
@@ -515,7 +452,7 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 					//console.log(resp);
 					if(resp == 1){
 						//swal("Good job", "You have insert the data !", "success");
-						window.location.href="course_list.php
+						window.location.href="course_list.php";
 					}else{
 						swal("Oops", "please chk your data", "warning");
 					}
@@ -550,22 +487,11 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 				console.log(imagename);
 			}
 			
-			
-			var dimage=$('#dimage')[0].files[0];
-			if(dimage){
-				console.log(dimage);
-			}
-			if(dimage!=''){
-				var dimagename="<?php echo $dimage;?>";
-				console.log(dimagename);
-			}
-			
-			var trainername=$('#tainer_name').val();
+	
 			var price=$('#price').val();
-			var seat=$('#seat').val();
-			var starttime=$('#stime').val();
-			var closedtime=$('#ctime').val();
+			
 			var status=$('#status').val();
+			var shortdescription=CKEDITOR.instances["shortdescription"].getData();
 			var description=CKEDITOR.instances["description"].getData();
 			// console.log(id);
 			// console.log(category);
@@ -585,15 +511,11 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 			data.append('F_name',name);
 			data.append('F_image',image);
 			data.append('F_imagename',imagename);
-			data.append('F_dimage',dimage);
-			data.append('F_dimagename',dimagename);
-			//data.append('T_dimage',dimage);
-			data.append('F_trainername',trainername);
+			
 			data.append('F_price',price);
-			data.append('F_seat',seat);
-			data.append('F_starttimne',starttime);
-			data.append('F_closedtime',closedtime);
+			
 			data.append('F_status',status);
+			data.append('F_shortdescription',shortdescription);
 			data.append('F_description',description);
 			
 			$.ajax({

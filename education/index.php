@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php session_start();
+	include "admin/config/config.php";
+$sql="select * from course";
+$result=mysqli_query($conn,$sql);
+//	print_r($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -222,32 +227,33 @@
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
+		<?php while($row=mysqli_fetch_array($result)){
+			?>
+			
+		
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="image/course-1.jpg" class="img-fluid" alt="...">
+              <img src="<?php echo 'admin/image/course/'.$row['image'];?>" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
-                  <p class="price">$169</p>
+                  <h4><?php echo $row['category'];?></h4>
+                  <p class="price">$<?php echo $row['price'];?></p>
                 </div>
 
-                <h3><a href="course_detail.php">Website Design</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <div><a href="course_detail.php?detail=<?php echo $row['course_id'];?> " style="font-weight:bold;"><?php echo $row['course_name'];?></a></div>
+                <p style=" width:100%;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['short_description'];?><span><a href="course_detail.php?detail=<?php echo $row['course_id'];?> " style="font-weight:bold;">Read More</a></span></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="image/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Antonio</span>
+							
                   </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
+                  
                 </div>
               </div>
             </div>
-          </div> <!-- End Course Item-->
+          </div> 
+		  <?php
+	
+		}?><!-- End Course Item-->
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="course-item">
@@ -259,16 +265,13 @@
                 </div>
 
                 <h3><a href="course_detail.php">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.<span><a href="course_detail.php" style="font-weight:bold;">Read More</a></span></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="image/trainers/trainer-2.jpg" class="img-fluid" alt="">
-                    <span>Lana</span>
+                    
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;35
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;42
+                    
                   </div>
                 </div>
               </div>
@@ -285,16 +288,13 @@
                 </div>
 
                 <h3><a href="course_detail.php">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.<span><a href="course_detail.php" style="font-weight:bold;">Read More</a></span></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="image/trainers/trainer-3.jpg" class="img-fluid" alt="">
-                    <span>Brandon</span>
+                 
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;20
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;85
+                    
                   </div>
                 </div>
               </div>

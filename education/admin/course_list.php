@@ -196,13 +196,11 @@
                     <th scope="col">Category_Course</th>
                     <th scope="col">Course_Name</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Detail_Image</th>
-                    <th scope="col">Trainer_name</th>
+                   
                     <th scope="col">Price</th>
-					<th scope="col">Seat</th>
-                    <th scope="col">Start_Time</th>
-					<th scope="col">Closed_Time</th>
+					
 					<th scope="col">Status</th>
+					<th scope="col">Short_Description</th>
 					<th scope="col">Description</th>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
@@ -219,14 +217,12 @@
 					<td><?php echo $rrow['course_name'];?></td>
 					
 					<td><img src="<?php echo 'image/course/'.$rrow['image'];?>" style="width:50px; border-radius:20px;"></td>
-					<td><img src="<?php echo 'image/course_detail/'.$rrow['dimage'];?>" style="width:50px; border-radius:20px;"></td>
-					<td><?php echo $rrow['trainer_name'];?></td>
+					
 					<td><?php echo $rrow['price'];?></td>
-					<td><?php echo $rrow['seat'];?></td>
-					<td><?php echo $rrow['start_time'];?></td>
-					<td><?php echo $rrow['closed_time'];?></td>
+					
 					<td><?php echo $rrow['status'];?></td>
-					<td><textarea id="w3review" style="color:#fff; width:100%; background-color:#172b4d;"name="w3review" rows="4" cols="50"><?php echo $rrow['description'];?></textarea></td>
+					<td><textarea id="w3review" style="color:#fff;  background-color:#172b4d;"name="w3review" rows="4" cols="50"><?php echo $rrow['short_description'];?></textarea></td>
+					<td><textarea id="w3review" style="color:#fff;  background-color:#172b4d;"name="w3review" rows="4" cols="50"><?php echo $rrow['description'];?></textarea></td>
 					<td><a type="button" href="course.php?edit=<?php echo $rrow['course_id'];?> " class="btn btn-danger">Edit</a></td>
 					<td><a type="button" href="ajax/course_delete.php?delete=<?php echo $rrow['course_id'];?> " class="btn btn-danger">Delete</a></td>
 					
