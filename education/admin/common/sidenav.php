@@ -118,6 +118,16 @@
               <i class="ni ni-bullet-list-67 text-red"></i>Course List
             </a>
           </li>
+		  <li class="nav-item">
+            <a class="nav-link " href="testinomial_list.php">
+              <i class="ni ni-bullet-list-67 text-red"></i>Testinomial List
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link " href="about_list.php">
+              <i class="ni ni-bullet-list-67 text-red"></i>About List
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="login.php">
               <i class="ni ni-key-25 text-info"></i> Login

@@ -185,7 +185,7 @@
         <div class="col">
           <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">Category_education List</h3>
+              <h3 class="text-white mb-0">Testinomial List</h3>
 			  <div style="text-align:center; "><a href="testinomial.php" type="button"  class="btn btn-danger">Add</a></div>
             </div>
             <div class="table-responsive">
@@ -195,8 +195,8 @@
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
 					<th scope="col">Image</th>
-                    <th scope="col">Description</th>
 					<th scope="col">Status</th>
+					<th scope="col">Description</th>
 					 <th scope="col">Edit</th>
 					 <th scope="col">Delete</th>
                     
@@ -206,17 +206,18 @@
                 <tbody>
 				<?php
 					while($rrow=mysqli_fetch_array($rresult)){
-						//print_r($rrow);
+					$image=$rrow['image'];
+					//print_r($image);
 				?>
 				<tr>
 					<td><?php echo $rrow['id'];?></td>
 					<td><?php echo $rrow['name'];?></td>
-					<td><img src="" style="width:50px; border-radius:20px;"><?php echo $rrow['image']?></td>
-					<td><?php echo $rrow['status'];?></td>''
-					<td><?php echo $rrow['description'];?></td>
+					<td><img src="<?php echo 'image/testinomial_img/'.$rrow['image'];?>" style="width:50px; border-radius:20px;"></td>
+					<td><?php echo $rrow['status'];?></td>
+					<td><textarea  rows="2" cols="25" style="overflow: hidden; background-color:#32325d;color:#fff; text-overflow: ellipsis; "><?php echo $rrow['description'];?></textarea></td>
 					
 					<td><a type="button" href="testinomial.php?edit=<?php echo $rrow['id'];?> " class="btn btn-danger">Edit</a></td>
-					<td><a type="button" href="ajax/delete_cat_course.php?delete=<?php echo $rrow['id'];?> " class="btn btn-danger">Delete</a></td>
+					<td><a type="button" href="ajax/testinomial_delete.php?delete=<?php echo $rrow['id'];?> " class="btn btn-danger">Delete</a></td>
 					
 					
 				 </tr>
@@ -252,10 +253,10 @@
 							}else{
 								$active='';
 							}
-							echo '<li class="page-item '.$active.'"><a class="page-link"  href="tesinomial_list.php?page='.$i.' " >'.$i.'</a></li>';
+							echo '<li class="page-item '.$active.'"><a class="page-link"  href="testinomial_list.php?page='.$i.' " >'.$i.'</a></li>';
 						}
 						if($total>$page){
-							echo '<li class="page-item '.$active.'"><a href="testinomial_list.php?page='.($page+1).' " class="page-link" style="padding:12px 30px" >Next</a></li>';
+							echo '<li class="page-item '.$active.'"><a href="testinomial_list.php?page='.($page+1).' " class="page-link" style="padding:12px 30px" style="font-weight:bold;">Next</a></li>';
 						}
 						
 						

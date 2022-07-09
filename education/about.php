@@ -1,4 +1,13 @@
-<?php session_start();?>
+<?php
+ include "admin/config/config.php";
+ session_start();
+
+$sql="select * from testinomial ";
+$result=mysqli_query($conn,$sql);
+$wsql="select * from about ";
+//print_r($result);
+$wresult=mysqli_query($conn,$wsql);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +15,7 @@
 <head>
   <!--head start-->
   <?php include "common/head.php";?>
-  <!--head end<!--head start-->-->
+  <!--head end<!--head start-->
 </head>
 
 <body>
@@ -23,26 +32,25 @@
         <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
       </div>
     </div><!-- End Breadcrumbs -->
-
-    <!-- ======= About Section ======= -->
+		<?php $count=null;
+		while($wrow=mysqli_fetch_array($wresult)){
+			if($count>=1){
+			?>
+			
+  <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="image/about.jpg" class="img-fluid" alt="">
+	
+			
+          <div class="col-lg-6 order-1 order-lg-2"  data-aos="fade-left" data-aos-delay="100">
+            <img src="<?php echo 'admin/image/about/'.$wrow['image'];?>"  class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>ABOUT US</h3>
-            <p class="fst-italic">
-             EduS8ul transform career through various skills and certification training. 
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> We are leading education provider of training for working professionals in the arrears of project management , service management , big data ,data science , quality management and team management.</li>
-              <li><i class="bi bi-check-circle"></i> We offer live online training for our students and online e- learning self paced training .</li>
-              <li><i class="bi bi-check-circle"></i> Our trainers and team are always ready to train learning minds in various areas of courses pmp scrum master, six sigma , ITIL , prince2 , z
-				</li>
-            </ul>
+            
+            <?php echo $wrow['description'];?>
            
 
           </div>
@@ -50,6 +58,11 @@
 
       </div>
     </section><!-- End About Section -->
+	<?php
+			}	
+			$count++;
+			
+		}?>
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts section-bg">
@@ -93,81 +106,28 @@
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
-
+			<?php while($row=mysqli_fetch_array($result)){
+				?>
+				
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="image/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
+                  <img src="<?php echo 'admin/image/testinomial_img/'.$row['image']?>" class="testimonial-img" alt="">
+                  <h3><?php echo  $row['name'];?></h3>
                   <h4>Ceo &amp; Founder</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+						<?php echo  $row['description'];?>
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
+			<?php
+			}?><!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="image/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="image/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="image/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="image/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
+            
 
           </div>
           <div class="swiper-pagination"></div>

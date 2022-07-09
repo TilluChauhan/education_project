@@ -30,7 +30,8 @@
 		$description=$row['description'];
 		$image=$row['image'];
 		$status=$row['status'];
-		print_r($image);
+		//print_r($imagename);
+		//print_r($name);
 	}
 	
 	
@@ -313,13 +314,13 @@
 	  $(document).ready(function(){
 		 $('#add').click(function(){
 			var name=$('#name').val(); 
-			var image=$('#image')[0].files[0]; 
+			var image=$('#image')[0].files[0];	
 			var status=$('#status').val(); 
 			var description=$('#description').val();
-				console.log(name);
-				console.log(image);
-				console.log(status);
-				console.log(description);
+				//console.log(name);
+				//console.log(image);
+				//console.log(status);
+				//console.log(description);
 				
 				var data=new FormData();
 				data.append('T_name',name);
@@ -336,7 +337,16 @@
 					data:data,
 					
 					success:function(res){
-						console.log(res);
+						//console.log(res);
+						if(res==1){
+							window.location.href="testinomial_list.php";
+						}else if(res==2){
+							swal({
+							  title: "OOps",
+							  text: "Please Chk Something Get Worng!",
+							  icon: "warning",
+							});
+						}
 					}
 				});
 		 });
@@ -347,13 +357,13 @@
 			//var image=$('#image')[0].files[0]; 
 			var image=$('#image')[0].files[0];
 			if(image){
-				
 				console.log(image);
 			}
 			if(image!= ''){
 				var imagename="<?php echo $image;?>";
 				console.log(imagename);
 			}
+			//console.log(imagename);
 			var status=$('#status').val(); 
 			var description=$('#description').val();
 				//console.log(name);
@@ -378,7 +388,14 @@
 					data:data,
 					
 					success:function(res){
-						console.log(res);
+						//console.log(res);
+						if(res==1){
+							swal({
+							  title: "Good job",
+							  text: "You have successfully update!",
+							  icon: "success",
+							});
+						}
 					}
 				});
 		 });

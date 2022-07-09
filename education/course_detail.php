@@ -52,7 +52,7 @@
             <img src="<?php echo 'admin/image/course/'.$row['image'];?>" style="width:100%; height:30%;" class="" alt="">
 			<div  style="display:flex;">
 				<div style="flex:1;">
-					<div style="font-weight:bold;"><?php echo $row['course_name'];?></div>
+					<h3 style="font-weight:bold;"><?php echo $row['course_name'];?></h3>
 				</div>
 				<div style="flex:1; text-align:right">
 					<h3 style="font-weight:bold;">Price<span style="padding:5px 0px;">:</span>$<?php echo $row['price']?></h3>

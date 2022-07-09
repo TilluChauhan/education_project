@@ -2,6 +2,9 @@
 	include "admin/config/config.php";
 $sql="select * from course";
 $result=mysqli_query($conn,$sql);
+$wsql="select * from about ";
+//print_r($result);
+$wresult=mysqli_query($conn,$wsql);
 //	print_r($result);
 ?>
 <!DOCTYPE html>
@@ -29,24 +32,22 @@ $result=mysqli_query($conn,$sql);
   <main id="main">
 
     <!-- ======= About Section ======= -->
+	<?php $count=null;
+		while($wrow=mysqli_fetch_array($wresult)){
+			if($count==1){
+			?>
+			
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
 		<?php //print_r($result);?>
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="image/about.jpg" class="img-fluid" alt="">
+            <img src="<?php echo 'admin/image/about/'.$wrow['image'];?>"  class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-	     <h3>ABOUT US</h3>
-            <p class="fst-italic">
-              EduS8ul transform career through various skills and certification training. 
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i>We are leading education provider of training for working professionals in the arrears of project management , service management , big data ,data science , quality management and team management.</li>
-              <li><i class="bi bi-check-circle"></i>  We offer live online training for our students and online e- learning self paced training .</li>
-              <li><i class="bi bi-check-circle"></i>Our trainers and team are always ready to train learning minds in various areas of courses pmp scrum master, six sigma , ITIL , prince2 , zli>
-            </ul>
+	     <h3 style="text-align:bold;">ABOUT US</h3>
+            <?php echo $wrow['description'];?>
            
 
           </div>
@@ -54,6 +55,12 @@ $result=mysqli_query($conn,$sql);
 
       </div>
     </section><!-- End About Section -->
+	<?php
+			}	
+			$count++;
+			
+		}?>
+
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts section-bg">
@@ -227,7 +234,7 @@ $result=mysqli_query($conn,$sql);
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-		<?php while($row=mysqli_fetch_array($result)){
+		<?php $count=null; while($row=mysqli_fetch_array($result)){if($count<=2){
 			?>
 			
 		
@@ -241,7 +248,7 @@ $result=mysqli_query($conn,$sql);
                 </div>
 
                 <div><a href="course_detail.php?detail=<?php echo $row['course_id'];?> " style="font-weight:bold;"><?php echo $row['course_name'];?></a></div>
-                <p style=" width:100%;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['short_description'];?><span><a href="course_detail.php?detail=<?php echo $row['course_id'];?> " style="font-weight:bold;">Read More</a></span></p>
+                <p style=" width:100%;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['short_description'];?><span><a href="course_detail.php?detail=<?php echo $row['course_id'];?>	" style="font-weight:bold;">Read More</a></span></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
 							
@@ -252,54 +259,9 @@ $result=mysqli_query($conn,$sql);
             </div>
           </div> 
 		  <?php
-	
+		}$count++;
 		}?><!-- End Course Item-->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="course-item">
-              <img src="image/course-2.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Marketing</h4>
-                  <p class="price">$250</p>
-                </div>
-
-                <h3><a href="course_detail.php">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.<span><a href="course_detail.php" style="font-weight:bold;">Read More</a></span></p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="course-item">
-              <img src="image/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Content</h4>
-                  <p class="price">$180</p>
-                </div>
-
-                <h3><a href="course_detail.php">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.<span><a href="course_detail.php" style="font-weight:bold;">Read More</a></span></p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                 
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
 
         </div>
 

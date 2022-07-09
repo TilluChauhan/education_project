@@ -50,8 +50,8 @@
 		$price=$editrow['price'];
 		$status=$editrow['status'];
 		//$description=$editrow['description'];
-		$shortdescription= trim ($editrow['short_description']);
-		$description= trim ($editrow['description']);
+		$shortdescription= $editrow['short_description'];
+		$description= $editrow['description'];
 		
 		//print_r($description);
 		
@@ -269,13 +269,13 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="form-group">
 					  <label for="usr">Short Description</label>
-					   <textarea type="text" class="form-control description" value="<?php echo $shortdescription;?>"  id="shortdescription"   placeholder="Enter Feature" ></textarea>
+					   <textarea type="text" class="form-control description"   id="shortdescription"   placeholder="Enter Feature" ><?php echo $shortdescription;?></textarea>
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12">
 					<div class="form-group">
 					  <label for="usr">Description</label>
-					   <textarea type="text" class="form-control description" value="<?php echo $description;?>"  id="description"   placeholder="Enter Feature" ></textarea>
+					   <textarea type="text" class="form-control description"   id="description"   placeholder="Enter Feature" ><?php echo $description;?></textarea>
 					</div>
 				</div>
 				
@@ -355,15 +355,16 @@
  <!--script-->
 	<?php include "common/script.php";?>
 	
-	<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+	<script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
 	
 	<!--script-->
   <script>
    // CKEDITOR.replace('description');
 CKEDITOR.replace('description');
+CKEDITOR.instances['description'].setData();
 CKEDITOR.replace('shortdescription');
-CKEDITOR.instances['shortdescription'].setData("<?php echo $shortdescription;?>");
-CKEDITOR.instances['description'].setData("<?php echo $description;?>");
+CKEDITOR.instances['shortdescription'].setData();
+
 
 	
 	window.TrackJS &&
@@ -492,7 +493,7 @@ CKEDITOR.instances['description'].setData("<?php echo $description;?>");
 			
 			var status=$('#status').val();
 			var shortdescription=CKEDITOR.instances["shortdescription"].getData();
-			var description=CKEDITOR.instances["description"].getData();
+			 var description=CKEDITOR.instances["description"].getData();
 			// console.log(id);
 			// console.log(category);
 			// console.log(name);
