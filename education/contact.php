@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php session_start();
+	include "admin/config/config.php";
+	$sql="select * from contactus ";
+	$result=mysqli_query($conn,$sql);
+	//print_r($result);
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +32,12 @@
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
+	<?php 
+	while($row=mysqli_fetch_array($result)){
+		?>
+		
       <div data-aos="fade-up">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14571.85502372358!2d91.55906932614575!3d24.067580850941717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753def25f579e77%3A0xbd60dda9858871b5!2sGournagar%2C%20Tripura!5e0!3m2!1sen!2sin!4v1657086697075!5m2!1sen!2sin" width="100%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="<?php echo $row['url'];?>" width="100%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 	 
 
@@ -40,49 +50,57 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>State - Tripura , city - khowai , village - grounagar </p>
+                <p><?= $row['location'];?></p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>Ajaymkj8@gmail.com</p>
+                <p><?= $row['email'];?></p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call us:</h4>
-                <p>(+91)7678237434</p>
+                <p>(+91)<?= $row['mobile'];?></p>
               </div>
 
             </div>
 
           </div>
+		  <?php
+	}?>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+				<label style="font-weight:bold;"> Name:<span style="margin-left:4px; color:#520f15;font-weight:bold; font-style:italic;" id="emptyname"></span></label>
+					
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" >
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
+				<label style="font-weight:bold;"> Email:<span style="margin-left:4px; color:#520f15;font-weight:bold; font-style:italic;" id="emptyemail"></span></label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
               <div class="form-group mt-3">
+			  <label style="font-weight:bold;"> Subject:<span style="margin-left:4px; color:#520f15;font-weight:bold; font-style:italic;" id="emptysub"></span></label>
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+			  <label style="font-weight:bold;"> Message:<span style="margin-left:4px; color:#520f15;font-weight:bold; font-style:italic;" id="emptymessage"></span></label>
+                <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
               </div>
               <div class="my-3">
+				
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+              <div class="text-center"><button name="login" id="submit" type="submit">Send Message</button></div>
+            </div>
 
           </div>
 
@@ -102,7 +120,60 @@
 
   <!-- Vendor JS Files -->
   <!--start script-->
+  
   <?php include "common/script.php";?>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+	$(document).ready(function(){
+		$('#submit').click(function(){
+			//console.log('asgd');
+			$('#name').keyup(function(){
+				$('#emptyname').html('');
+			});
+			$('#email').keyup(function(){
+				$('#emptyemail').html('');
+			});
+			$('#subject').keyup(function(){
+				$('#emptysubject').html('');
+			});
+			
+			var name=$('#name').val();
+			var email=$('#email').val();
+			var subject=$('#subject').val();
+			var message=$('#message').val();
+			console.log(name);
+			console.log(email);
+			console.log(subject);
+			console.log(message);
+			if(name==''){
+				$('#emptyname').html('*Please Enter name');
+				return false;
+			}
+			if(email==''){
+				$('#emptyemail').html('*Please Enter Email');
+				return false;
+			}
+			if(subject==''){
+				$('#emptysubject').html('*Please Enter subject');
+				return false;
+			}
+			var data={"T_name":name,"T_email":email,"T_subject":subject,"T_message":message};
+			console.log(data);
+			
+			$.ajax({
+				type:"POST",
+				url:"mailer.php",
+				data:data,
+				success:function(res){
+					//console.log(res)
+					
+					
+				}
+				
+			});
+		});
+	});
+  </script>
  <!--end script-->
 </body>
 

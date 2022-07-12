@@ -1426,6 +1426,15 @@ section {
 .ere i{font-size:100px;color:#5fcf80;padding-bottom:20px; }
 .er3 h4{font-weight:bold;}
 
+.page a:active{background-color:#000;}
+
+.pagination ul{padding:0px; text-align:center;}
+.w3-button.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #5e72e4;
+    border-color: #5e72e4;
+}
 @media screen and (max-width:992px){
 	
 }

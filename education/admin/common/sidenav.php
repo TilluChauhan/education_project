@@ -124,8 +124,18 @@
             </a>
           </li>
 		  <li class="nav-item">
+            <a class="nav-link " href="promotion_list.php">
+              <i class="ni ni-bullet-list-67 text-red"></i>Promotion List
+            </a>
+          </li>
+		  <li class="nav-item">
             <a class="nav-link " href="about_list.php">
               <i class="ni ni-bullet-list-67 text-red"></i>About List
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link " href="contactUs_page_list.php">
+              <i class="ni ni-bullet-list-67 text-red"></i>Contact Us List
             </a>
           </li>
           <li class="nav-item">

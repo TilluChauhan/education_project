@@ -2,10 +2,15 @@
 	include "admin/config/config.php";
 $sql="select * from course";
 $result=mysqli_query($conn,$sql);
-$wsql="select * from about ";
+
+$wsql="select * from about";
 //print_r($result);
 $wresult=mysqli_query($conn,$wsql);
 //	print_r($result);
+
+$pro="SELECT * FROM `promotion` WHERE status=1";
+$proresult=mysqli_query($conn,$pro);
+//rint_r($proresult);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +26,28 @@ $wresult=mysqli_query($conn,$wsql);
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Learning Today,<br>Leading Tomorrow</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="courses.html" class="btn-get-started">Get Started</a>
-    </div>
-  </section><!-- End Hero -->
+  <!-- End Hero -->
+  <section  style="padding-top:100px !important;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+				
+					<div class="owl-carousel owl-theme height:550px;">
+					<?php while($prorow=mysqli_fetch_array($proresult)){
+					?>
+						<a href="<?php echo $prorow['url'];?>"><img src="<?php echo 'admin/image/promotion_img/'.$prorow['image'];?>" style="width:100%; height:500px;"></a>
+						
+						
+						<?php
+				}?>
+					
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+  </section>
 
   <main id="main">
 
@@ -264,7 +284,7 @@ $wresult=mysqli_query($conn,$wsql);
 
 
         </div>
-
+				<div style="text-align:center; margin-top:40px;"><a href="courses.php" type="button" style="background-color:#520f15; color:#fff; font-weight:bold; padding:15px 20px;" class="btn">ALL COURSE</a></div>
       </div>
     </section><!-- End Popular Courses Section -->
 
@@ -346,6 +366,31 @@ $wresult=mysqli_query($conn,$wsql);
 
   <!-- Vendor JS Files -->
   <?php include "common/script.php";?>
+  <script>
+  $(document).ready(function(){
+	  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+	//autoWidth:true,
+	autoheight:true,
+	autoplay:true,
+    nav:true,
+	stagePadding:100,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
+        }
+    }
+})
+  });
+	
+  </script>
 
 </body>
 

@@ -1,11 +1,25 @@
 <?php session_start();
 
 include "admin/config/config.php";
-$sql="select * from course";
-$result=mysqli_query($conn,$sql);
+
 
 $catsql="select * from cat_course";
 $catresult=mysqli_query($conn,$catsql);
+
+$cat=null;
+if(isset($_GET['cat'])){
+	$cat=$_GET['cat'];
+	$sql="select * from course where category='".$cat."'";
+	
+//print_r($cresult);
+}else{
+	$sql="select * from course ";
+}
+$result=mysqli_query($conn,$sql);
+
+		
+	
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +42,7 @@ $catresult=mysqli_query($conn,$catsql);
     <div class="breadcrumbs">
       <div class="container">
         <h2>Courses</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <p>We at Total professional person offer you access to quality courseware as per the present demand within the market. Our career counselors provide you with job help supported your resume so you'll be able to appraise and improve yourself so as to attain goals discovered by you in your life. The total professional person provides coaching for a few the globally acknowledged skilled certificates.</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -42,7 +56,7 @@ $catresult=mysqli_query($conn,$catsql);
 						<?php while($catrow=mysqli_fetch_array($catresult)){
 							?>
 							
-						  <a type="button"  href="course.php" style="background-color:#520f15; font-weight:bold; color:#fff;"  class="btn"><?php echo $catrow['cat_name'];?></a>
+						  <a type="button"  href="courses.php?cat=<?php echo $catrow['cat_name'];?>" style="background-color:#520f15; font-weight:bold; color:#fff;"  class="btn"><?php echo $catrow['cat_name'];?></a>
 						  <?php 
 						}
 						?>
@@ -64,7 +78,7 @@ $catresult=mysqli_query($conn,$catsql);
                 </div>
 
                 <div><a href="course_detail.php?detail=<?php echo $row['course_id'];?> " style="font-weight:bold;"><?php echo $row['course_name'];?></a></div>
-                <p style=" width:100%;overflow: hidden;text-overflow: ellipsis;"><?php echo $row['short_description'];?><span><a href="course_detail.php?detail=<?php echo $row['course_id'];?>	" style="font-weight:bold;">Read More</a></span></p>
+                <p><?php echo $row['short_description'];?><span><a href="course_detail.php?detail=<?php echo $row['course_id'];?>	" style="font-weight:bold;">Read More</a></span></p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
 							
@@ -78,12 +92,9 @@ $catresult=mysqli_query($conn,$catsql);
 		
 		}?><!-- End Course Item-->
 
-          
 
-        </div>
-
-      </div>
     </section><!-- End Courses Section -->
+	
 
   </main><!-- End #main -->
 
