@@ -109,16 +109,16 @@
 			processData:false,
 			data:data,
 			success:function(res){
-				console.log(res);
-				// if(res==1){
-					// window.location.href="index.php";
-				// }else{
-					// swal({
-					  // title: "oops!",
-					  // text: "please check email or password",
-					  // icon: "warning",
-					// });
-				// }
+				//console.log(res);
+				if(res==1){
+					window.location.href="index.php";
+				}else{
+					swal({
+					  title: "oops!",
+					  text: "please check email or password",
+					  icon: "warning",
+					});
+				}
 			}
 			
 		});
