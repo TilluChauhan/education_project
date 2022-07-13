@@ -186,7 +186,7 @@
           <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
               <h3 class="text-white mb-0">About List</h3>
-			  <div style="text-align:center; "><a href="about.php" type="button"  class="btn btn-danger">Add</a></div>
+			  
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-dark table-flush">
@@ -197,8 +197,7 @@
 					<th scope="col">Status</th>
 					<th scope="col">Description</th>
 					 <th scope="col">Edit</th>
-					 <th scope="col">Delete</th>
-                    
+					
 					
                   </tr>
                 </thead>
@@ -216,7 +215,7 @@
 					<td><textarea  rows="2" cols="25" style="overflow: hidden; background-color:#32325d;color:#fff; text-overflow: ellipsis; "><?php echo $rrow['description'];?></textarea></td>
 					
 					<td><a type="button" href="about.php?edit=<?php echo $rrow['id'];?> " class="btn btn-danger">Edit</a></td>
-					<td><a type="button" href="ajax/about_delete.php?delete=<?php echo $rrow['id'];?> " class="btn btn-danger">Delete</a></td>
+				
 					
 					
 				 </tr>

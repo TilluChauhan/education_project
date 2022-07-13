@@ -22,10 +22,7 @@
           <li><a class="active" href="index.php">Home</a></li>
           <li><a href="about.php">About</a></li>
           <li><a href="courses.php">Courses</a></li>
-          <li><a href="trainers.php">Trainers</a></li>
-          <li><a href="events.php">Events</a></li>
-          <li><a href="price.php">Pricing</a></li>
-
+          
           <li class="dropdown"><a href="contact.php">Contact</a></li>
             
         <i class="bi bi-list mobile-nav-toggle"></i>

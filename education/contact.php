@@ -169,6 +169,10 @@
 					if(res==1){
 						swal("Good job!", "You have Successfulluy Send Email", "success");
 					}
+					$('.swal-button-container').click(function(){
+						//console.log('Tushar');
+						window.location.href="contact.php";
+					});
 				}
 				
 			});
